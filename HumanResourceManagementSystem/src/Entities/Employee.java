@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class Employee {
     private String employeeId;      
     private String fullName;        
-    private String department;      
+    private Department department;      
     private String jobTitle;       
     private LocalDate dateOfJoining;
     private double basicSalary;     
@@ -23,7 +23,7 @@ public class Employee {
     public Employee() {
     }
     
-        public Employee(String id, String name, String dept, double salary) {
+        public Employee(String id, String name, Department dept, double salary) {
         this.employeeId = id;
         this.fullName = name;
         this.department = dept;
@@ -47,11 +47,11 @@ public class Employee {
         this.fullName = fullName;
     }
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(Department department) {
         this.department = department;
     }
 
