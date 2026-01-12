@@ -4,10 +4,77 @@
  */
 package Entities;
 
+import java.util.Date;
+
 /**
  *
  * @author NGOMI
  */
 public class Attendance {
-    
+
+    private String employeeId;
+    private Date date;
+    private String status; // Present / Absent
+    private int overtimeHours;
+
+    public Attendance() {
+    }
+
+    public Attendance(String employeeId, Date date, String status, int overtimeHours) {
+        this.employeeId = employeeId;
+        this.date = date;
+        this.status = status;
+        this.overtimeHours = overtimeHours;
+    }
+
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getOvertimeHours() {
+        return overtimeHours;
+    }
+
+    public void setOvertimeHours(int overtimeHours) {
+        this.overtimeHours = overtimeHours;
+    }
+
+    public boolean isPresent() {
+        return "Present".equalsIgnoreCase(status);
+    }
+
+    public boolean isAbsent() {
+        return "Absent".equalsIgnoreCase(status);
+    }
+
+    @Override
+    public String toString() {
+        return "Attendance{"
+                + "employeeId='" + employeeId + '\''
+                + ", date=" + date
+                + ", status='" + status + '\''
+                + ", overtimeHours=" + overtimeHours
+                + '}';
+    }
+
 }
