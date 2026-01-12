@@ -4,6 +4,7 @@
  */
 package Entities;
 
+import Utilities.DataValidation;
 import java.time.LocalDate;
 
 /**
@@ -60,21 +61,16 @@ public class Attendance {
     }
 
     public boolean isPresent() {
-        return "Present".equalsIgnoreCase(status);
+        return DataValidation.AttendenceStatus.PRESENT.name().equalsIgnoreCase(status);
     }
 
     public boolean isAbsent() {
-        return "Absent".equalsIgnoreCase(status);
+        return DataValidation.AttendenceStatus.ABSENT.name().equalsIgnoreCase(status);
     }
 
     @Override
     public String toString() {
-        return "Attendance{"
-                + "employeeId='" + employeeId + '\''
-                + ", date=" + date
-                + ", status='" + status + '\''
-                + ", overtimeHours=" + overtimeHours
-                + '}';
+        return "Attendance{" + "employeeId='" + employeeId + '\'' + ", date=" + date + ", status='" + status + '\'' + ", overtimeHours=" + overtimeHours + '}';
     }
 
 }
