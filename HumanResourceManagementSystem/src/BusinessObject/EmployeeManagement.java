@@ -20,7 +20,7 @@ public class EmployeeManagement {
     // Method searchById() + Pseudocode
     /*
     * FUNCTION searchById(id)
-    *   FOR EACH emp IN employeeList
+    *   FOR EACH emp IN empList
     *       IF emp.employeeId = id
     *           RETURN emp
     *               RETURN null
