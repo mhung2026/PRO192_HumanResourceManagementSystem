@@ -9,12 +9,5 @@ package Utilities;
  * @author NGOMI
  */
 public class DataValidation {
-
-    public enum AttendenceStatus {
-        PRESENT, ABSENT
-    }
-
-    public enum EmployeeStatus {
-        ACTIVE, INACTIVE
-    }
+    
 }
