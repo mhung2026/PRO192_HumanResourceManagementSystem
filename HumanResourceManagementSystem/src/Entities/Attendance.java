@@ -4,7 +4,8 @@
  */
 package Entities;
 
-import java.util.Date;
+import Utilities.DataValidation;
+import java.time.LocalDate;
 
 /**
  *
@@ -13,14 +14,14 @@ import java.util.Date;
 public class Attendance {
 
     private String employeeId;
-    private Date date;
+    private LocalDate date;
     private String status; // Present / Absent
     private int overtimeHours;
 
     public Attendance() {
     }
 
-    public Attendance(String employeeId, Date date, String status, int overtimeHours) {
+    public Attendance(String employeeId, LocalDate date, String status, int overtimeHours) {
         this.employeeId = employeeId;
         this.date = date;
         this.status = status;
@@ -35,11 +36,11 @@ public class Attendance {
         this.employeeId = employeeId;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -60,21 +61,16 @@ public class Attendance {
     }
 
     public boolean isPresent() {
-        return "Present".equalsIgnoreCase(status);
+        return DataValidation.AttendenceStatus.PRESENT.name().equalsIgnoreCase(status);
     }
 
     public boolean isAbsent() {
-        return "Absent".equalsIgnoreCase(status);
+        return DataValidation.AttendenceStatus.ABSENT.name().equalsIgnoreCase(status);
     }
 
     @Override
     public String toString() {
-        return "Attendance{"
-                + "employeeId='" + employeeId + '\''
-                + ", date=" + date
-                + ", status='" + status + '\''
-                + ", overtimeHours=" + overtimeHours
-                + '}';
+        return "Attendance{" + "employeeId='" + employeeId + '\'' + ", date=" + date + ", status='" + status + '\'' + ", overtimeHours=" + overtimeHours + '}';
     }
 
 }
