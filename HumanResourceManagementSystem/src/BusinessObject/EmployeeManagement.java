@@ -113,31 +113,32 @@ public class EmployeeManagement {
     * END FUNCTION
     * */
     public void addEmployee() {
-        Scanner sc = new Scanner(System.in);
+   Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter employee ID: ");
-        String employeeId = sc.nextLine();
+    System.out.print("Enter employee ID: ");
+    String employeeId = sc.nextLine();
 
-        // Check if employee ID already exists
-        Employee emp = searchById(employeeId);
-        if (emp != null) {
-            System.out.println("Employee with id " + employeeId + " already exists");
-            return;
-        }
+    Employee emp = searchById(employeeId);
+    if (emp != null) {
+        System.out.println("Employee with id " + employeeId + " already exists");
+        return;
+    }
 
-        System.out.print("Enter full name: ");
-        String fullName = sc.nextLine();
+    System.out.print("Enter full name: ");
+    String fullName = sc.nextLine();
 
-        System.out.print("Enter basic salary: ");
-        double basicSalary = sc.nextDouble();
+    System.out.print("Enter basic salary: ");
+    double basicSalary = sc.nextDouble();
+    sc.nextLine();  // ← THÊM DÒNG NÀY để xóa buffer
 
-        System.out.print("Enter department: ");
-        String department = sc.nextLine();
+    System.out.print("Enter department: ");
+    String department = sc.nextLine();
 
-        Employee newEmp = new Employee(employeeId, fullName, department, basicSalary);
-        empList.add(newEmp);
+    Employee newEmp = new Employee(employeeId, fullName, department, basicSalary);
+    empList.add(newEmp);
 
-        System.out.println("Employee with id " + employeeId + " added successfully");
+    System.out.println("Employee with id " + employeeId + " added successfully");
+    
     }
 
     /*
