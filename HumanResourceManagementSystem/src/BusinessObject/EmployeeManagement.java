@@ -92,6 +92,26 @@ public class EmployeeManagement {
         System.out.println("Employee with id " + emp.getEmployeeId() + " deleted successfully");
     }
 
+    /*
+    * FUNCTION addEmployee()
+    *   INPUT employeeId
+    *
+    *   emp <- searchById(employeeId)
+    *   IF emp != null THEN
+    *       PRINT "Employee with id already exists"
+    *       RETURN
+    *   END IF
+    *
+    *   INPUT fullName
+    *   INPUT basicSalary
+    *   INPUT department
+    *
+    *   newEmp <- new Employee(employeeId, fullName, department, basicSalary)
+    *   ADD newEmp to empList
+    *
+    *   PRINT "Employee added successfully"
+    * END FUNCTION
+    * */
     public void addEmployee() {
         Scanner sc = new Scanner(System.in);
         
@@ -119,6 +139,21 @@ public class EmployeeManagement {
         
         System.out.println("Employee with id " + employeeId + " added successfully");
     }
+
+    /*
+    * FUNCTION displayAllEmployee()
+    *   IF empList is empty THEN
+    *       PRINT "No employees to display"
+    *       RETURN
+    *   END IF
+    *
+    *   PRINT "List of all employees"
+    *
+    *   FOR EACH emp IN empList
+    *       PRINT emp
+    *   END FOR
+    * END FUNCTION
+    * */
     public void displayAllEmployees() {
         if (empList.isEmpty()) {
             System.out.println("No employees to display");
