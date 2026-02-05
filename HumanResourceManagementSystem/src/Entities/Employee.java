@@ -4,6 +4,8 @@
  */
 package Entities;
 
+import BusinessObject.EmployeeManagement;
+import DataObjects.DepartmentDAO;
 import java.time.LocalDate;
 
 /**
@@ -11,13 +13,14 @@ import java.time.LocalDate;
  * @author NGOMI
  */
 public class Employee {
-    String employeeId;      
-    String fullName;        
-    String department;      
-    String jobTitle;       
+
+    String employeeId;
+    String fullName;
+    String departmentId;
+    String jobTitle;
     LocalDate dateOfJoining;
-    double basicSalary;     
-    String employmentType;  
+    double basicSalary;
+    String employmentType;
     String status;
 
     public Employee() {
@@ -26,9 +29,9 @@ public class Employee {
     public Employee(String id, String name, String dept, double salary) {
         this.employeeId = id;
         this.fullName = name;
-        this.department = dept;
+        this.departmentId = dept;
         this.basicSalary = salary;
-        this.status = "Đang làm việc"; 
+        this.status = "Đang làm việc";
     }
 
     public String getEmployeeId() {
@@ -47,12 +50,12 @@ public class Employee {
         this.fullName = fullName;
     }
 
-    public String getDepartment() {
-        return department;
+    public String getDepartmentId() {
+        return departmentId;
     }
 
-    public void setDepartment(String department) {
-        this.department = department;
+    public void setDepartmentId(String departmentId) {
+        this.departmentId = departmentId;
     }
 
     public String getJobTitle() {
@@ -95,7 +98,6 @@ public class Employee {
         this.status = status;
     }
 
- 
     public void updateInfo(String newName, double newSalary) {
         this.fullName = newName;
         this.basicSalary = newSalary;
@@ -104,6 +106,6 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Nhân viên: " + fullName + " - Phòng: " + department + " - Lương: " + basicSalary;
+        return "Id: " + employeeId + " - Nhân viên: " + fullName + " - Phòng: " + departmentId + " - Lương: " + basicSalary;
     }
 }

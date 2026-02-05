@@ -21,6 +21,9 @@ import java.util.ArrayList;
  */
 public class EmployeeDAO {
 
+    public EmployeeDAO() {
+    }
+
     private final String FILE_NAME = "employees.txt";
     private final String DELIMITER = ",";
 
@@ -29,11 +32,11 @@ public class EmployeeDAO {
             for (Employee e : list) {
                 pw.println(e.getEmployeeId() + DELIMITER
                         + e.getFullName() + DELIMITER
-                        + e.getDepartment() + DELIMITER
+                        + e.getDepartmentId()+ DELIMITER
                         + e.getJobTitle() + DELIMITER
                         + e.getDateOfJoining() + DELIMITER
                         + e.getBasicSalary() + DELIMITER
-                        + e.getEmploymentType() + DELIMITER
+                        + e.getEmploymentType()+ DELIMITER
                         + e.getStatus());
             }
         } catch (IOException e) {
@@ -56,7 +59,7 @@ public class EmployeeDAO {
                     Employee e = new Employee();
                     e.setEmployeeId(p[0]);
                     e.setFullName(p[1]);
-                    e.setDepartment(p[2]);
+                    e.setDepartmentId(p[2]);
                     e.setJobTitle(p[3]);
                     e.setDateOfJoining(LocalDate.parse(p[4]));
                     e.setBasicSalary(Double.parseDouble(p[5]));
@@ -71,4 +74,5 @@ public class EmployeeDAO {
         }
         return list;
     }
+    
 }

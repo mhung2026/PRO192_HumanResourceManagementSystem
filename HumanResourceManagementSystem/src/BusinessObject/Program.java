@@ -5,9 +5,8 @@
 package BusinessObject;
 
 import DataObjects.EmployeeDAO;
-import Entities.Employee;
+import Utilities.DataInput;
 import Utilities.Menu;
-import java.util.List;
 
 /**
  *
@@ -32,25 +31,22 @@ public class Program {
 
             switch (choice) {
                 case 1:
-//                    manager.inputNewEmployee();
+                    manager.addEmployee();
                     break;
                 case 2:
-//                    manager.displayAll();
-                    EmployeeDAO employ = new EmployeeDAO();
-                    List<Employee> data = employ.loadFromFile();
-                    System.out.println(data.toString());
+                    manager.displayAllEmployees();
                     break;
                 case 3:
-//                    manager.searchById();
+                    System.out.println(manager.searchById(DataInput.getString("Nhập Id nhân viên ")));
                     break;
                 case 4:
-//                    manager.updateEmployee();
+                    manager.updateEmployee(DataInput.getString("Nhập Id nhân viên "));
                     break;
                 case 5:
-//                    manager.deleteEmployee();
+                    manager.deleteEmployee(DataInput.getString("Nhập Id nhân viên "));
                     break;
                 case 6:
-//                    manager.saveToFile();
+                    manager.saveToFile();
                     break;
                 case 0:
                     System.out.println("Tạm biệt!");

@@ -1,4 +1,5 @@
-EMP001,Nguyen Van A,IT,Developer,2023-01-15,1500.0,Full-time,Active
-EMP002,Tran Thi B,HR,Manager,2022-05-10,2000.0,Full-time,Active
-EMP003,Le Van C,Marketing,Designer,2023-08-20,1200.0,Part-time,Probation
-EMP004,Pham Minh D,Sales,Staff,2024-01-02,1000.0,Full-time,Active
+EMP001,Nguyen Van B,D01,Developer,2023-01-15,17000.0,Full-time,Active
+EMP002,Tran Thi B,D02,Manager,2022-05-10,2000.0,Full-time,Active
+EMP003,Le Van C,D01,Designer,2023-08-20,1200.0,Part-time,Probation
+EMP004,Pham Minh D,D03,Staff,2024-01-02,1000.0,Full-time,Active
+EMP006,Ngo Minh F,D01,null,null,100.0,null,Đang làm việc
