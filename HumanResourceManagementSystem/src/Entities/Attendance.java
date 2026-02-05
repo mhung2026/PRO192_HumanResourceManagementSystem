@@ -4,6 +4,7 @@
  */
 package Entities;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -13,14 +14,14 @@ import java.util.Date;
 public class Attendance {
 
     private String employeeId;
-    private Date date;
+    private LocalDate date;
     private String status; // Present / Absent
     private int overtimeHours;
 
     public Attendance() {
     }
 
-    public Attendance(String employeeId, Date date, String status, int overtimeHours) {
+    public Attendance(String employeeId, LocalDate date, String status, int overtimeHours) {
         this.employeeId = employeeId;
         this.date = date;
         this.status = status;
@@ -35,11 +36,11 @@ public class Attendance {
         this.employeeId = employeeId;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

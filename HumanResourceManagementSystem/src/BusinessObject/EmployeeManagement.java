@@ -7,6 +7,7 @@ package BusinessObject;
 import Entities.Employee;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -34,7 +35,6 @@ public class EmployeeManagement {
         }
         return null;
     }
-
 
     // Method updateEmployee() + Pseudocode
     /*
@@ -114,29 +114,29 @@ public class EmployeeManagement {
     * */
     public void addEmployee() {
         Scanner sc = new Scanner(System.in);
-        
+
         System.out.print("Enter employee ID: ");
         String employeeId = sc.nextLine();
-        
+
         // Check if employee ID already exists
         Employee emp = searchById(employeeId);
         if (emp != null) {
             System.out.println("Employee with id " + employeeId + " already exists");
             return;
         }
-        
+
         System.out.print("Enter full name: ");
         String fullName = sc.nextLine();
-        
+
         System.out.print("Enter basic salary: ");
         double basicSalary = sc.nextDouble();
-        
+
         System.out.print("Enter department: ");
         String department = sc.nextLine();
-        
-        Employee newEmp = new Employee(employeeId, fullName, department ,basicSalary);
+
+        Employee newEmp = new Employee(employeeId, fullName, department, basicSalary);
         empList.add(newEmp);
-        
+
         System.out.println("Employee with id " + employeeId + " added successfully");
     }
 
@@ -159,7 +159,7 @@ public class EmployeeManagement {
             System.out.println("No employees to display");
             return;
         }
-        
+
         System.out.println("===== List of all employees =====");
         for (Employee emp : empList) {
             System.out.println(emp);
