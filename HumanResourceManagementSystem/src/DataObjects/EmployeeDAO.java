@@ -40,7 +40,7 @@ public class EmployeeDAO {
                         + e.getStatus());
             }
         } catch (IOException e) {
-            System.out.println("Lỗi khi ghi file: " + e.getMessage());
+            System.out.println("Lỗi khi ghi file Employee: " + e.getMessage());
         }
     }
 
@@ -65,12 +65,11 @@ public class EmployeeDAO {
                     e.setBasicSalary(Double.parseDouble(p[5]));
                     e.setEmploymentType(p[6]);
                     e.setStatus(p[7]);
-
                     list.add(e);
                 }
             }
         } catch (Exception e) {
-            System.out.println("Lỗi khi đọc file: " + e.getMessage());
+            System.out.println("Lỗi khi đọc file Employee: " + e.getMessage());
         }
         return list;
     }

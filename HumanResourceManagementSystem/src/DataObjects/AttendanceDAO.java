@@ -18,6 +18,7 @@ import java.util.List;
  */
 public class AttendanceDAO {
     private final String FILE_NAME = "attendance.txt";
+    private final String DELIMITER = ",";
 
     public List<Attendance> loadFromFile() {
         List<Attendance> list = new ArrayList<>();
@@ -27,7 +28,7 @@ public class AttendanceDAO {
         try (BufferedReader br = new BufferedReader(new FileReader(f))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] p = line.split(",");
+                String[] p = line.split(DELIMITER);
                 if (p.length == 4) {
                     Attendance att = new Attendance();
                     att.setEmployeeId(p[0].trim());

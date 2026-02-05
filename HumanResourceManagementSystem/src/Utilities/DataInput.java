@@ -24,7 +24,7 @@ public class DataInput {
             if (!input.isEmpty()) {
                 return input;
             }
-            System.err.println("Dữ liệu không được để trống! Vui lòng nhập lại.");
+            System.out.println("Dữ liệu không được để trống! Vui lòng nhập lại.");
         }
     }
 
@@ -33,12 +33,9 @@ public class DataInput {
             try {
                 System.out.print(message);
                 double result = Double.parseDouble(sc.nextLine());
-                if (result > 0) {
-                    return result;
-                }
-                System.err.println("Giá trị phải lớn hơn 0!");
+                return result;
             } catch (NumberFormatException e) {
-                System.err.println("Vui lòng nhập số thực hợp lệ!");
+                System.out.println("Vui lòng nhập số thực hợp lệ!");
             }
         }
     }
@@ -51,7 +48,7 @@ public class DataInput {
                 String input = sc.nextLine().trim();
                 return LocalDate.parse(input, formatter);
             } catch (DateTimeParseException e) {
-                System.err.println("Định dạng ngày không đúng (Ví dụ: 25/12/2023). Vui lòng nhập lại!");
+                System.out.println("Định dạng ngày không đúng (Ví dụ: 25/12/2023). Vui lòng nhập lại!");
             }
         }
     }
@@ -64,9 +61,9 @@ public class DataInput {
                 if (result >= min && result <= max) {
                     return result;
                 }
-                System.err.println("Vui lòng chọn trong khoảng từ " + min + " đến " + max);
+                System.out.println("Vui lòng chọn trong khoảng từ " + min + " đến " + max);
             } catch (NumberFormatException e) {
-                System.err.println("Vui lòng nhập số nguyên!");
+                System.out.println("Vui lòng nhập số nguyên!");
             }
         }
     }

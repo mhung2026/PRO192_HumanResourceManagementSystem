@@ -17,6 +17,7 @@ import java.util.List;
  */
 public class SalaryDAO {
     private final String FILE_NAME = "salary_records.txt";
+    private final String DELIMITER = ",";
 
     public List<SalaryRecord> loadFromFile() {
         List<SalaryRecord> list = new ArrayList<>();
@@ -26,7 +27,7 @@ public class SalaryDAO {
         try (BufferedReader br = new BufferedReader(new FileReader(f))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] p = line.split(",");
+                String[] p = line.split(DELIMITER);
                 if (p.length == 7) {
                     SalaryRecord s = new SalaryRecord();
                     s.setEmployeeId(p[0].trim());

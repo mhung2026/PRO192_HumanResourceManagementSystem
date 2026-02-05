@@ -4,7 +4,6 @@
  */
 package BusinessObject;
 
-import DataObjects.EmployeeDAO;
 import Utilities.DataInput;
 import Utilities.Menu;
 
@@ -47,6 +46,7 @@ public class Program {
                     break;
                 case 6:
                     manager.saveToFile();
+                    System.out.println("Success full");
                     break;
                 case 0:
                     System.out.println("Tạm biệt!");

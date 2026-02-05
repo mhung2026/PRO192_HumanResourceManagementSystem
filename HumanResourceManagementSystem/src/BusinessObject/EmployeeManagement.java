@@ -12,7 +12,6 @@ import Utilities.DataInput;
 import Utilities.DataValidation;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  *
@@ -20,19 +19,19 @@ import java.util.Scanner;
  */
 public class EmployeeManagement {
 
-    ArrayList<Employee> empList = new ArrayList<Employee>();
-    ArrayList<Department> depList = new ArrayList<Department>();
-    private EmployeeDAO dao = new EmployeeDAO();
-    private DepartmentDAO daoDepartment = new DepartmentDAO();
+    ArrayList<Employee> empList = new ArrayList<>();
+    ArrayList<Department> depList = new ArrayList<>();
+    private final EmployeeDAO dao = new EmployeeDAO();
+    private final DepartmentDAO daoDepartment = new DepartmentDAO();
 
     public EmployeeManagement() {
-        if (this.empList.isEmpty()) {
+        if (this.empList.isEmpty() || this.empList == null) {
             this.empList = (ArrayList<Employee>) dao.loadFromFile();
         }
         if (this.empList == null) {
             this.empList = new ArrayList<>();
         }
-        if (this.depList.isEmpty()) {
+        if (this.depList.isEmpty() || this.depList == null) {
             this.depList = (ArrayList< Department>) daoDepartment.loadFromFile();
         }
         if (this.depList == null) {
@@ -93,7 +92,14 @@ public class EmployeeManagement {
             return;
         }
         String fullName = DataInput.getString("Enter new full name: ");
-        double salary = DataInput.getDouble("Enter new basic salary: ");
+        double salary = 0; 
+        while (true) {
+            salary = DataInput.getDouble("Enter new basic salary: ");
+            if (DataValidation.isValidSalary(salary)) {
+                break;
+            }
+            System.out.println("Salary is a positive number");
+        }
         emp.setFullName(fullName);
         emp.setBasicSalary(salary);
         System.out.println("Employee with id " + emp.getEmployeeId() + " updated successfully");
@@ -142,7 +148,6 @@ public class EmployeeManagement {
     * END FUNCTION
     * */
     public void addEmployee() {
-        Scanner sc = new Scanner(System.in);
 
         String employeeId = DataInput.getString("Enter employee ID: ");
         if (!DataValidation.isEmployeeIdUnique(employeeId, empList)) {
