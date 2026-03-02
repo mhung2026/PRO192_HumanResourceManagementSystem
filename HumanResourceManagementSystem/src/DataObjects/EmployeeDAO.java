@@ -32,11 +32,11 @@ public class EmployeeDAO {
             for (Employee e : list) {
                 pw.println(e.getEmployeeId() + DELIMITER
                         + e.getFullName() + DELIMITER
-                        + e.getDepartmentId()+ DELIMITER
+                        + e.getDepartmentId() + DELIMITER
                         + e.getJobTitle() + DELIMITER
                         + e.getDateOfJoining() + DELIMITER
                         + e.getBasicSalary() + DELIMITER
-                        + e.getEmploymentType()+ DELIMITER
+                        + e.getEmploymentType() + DELIMITER
                         + e.getStatus());
             }
         } catch (IOException e) {
@@ -56,7 +56,12 @@ public class EmployeeDAO {
             while ((line = br.readLine()) != null) {
                 String[] p = line.split(DELIMITER);
                 if (p.length == 8) {
-                    Employee e = new Employee();
+                    Employee e = new Employee() {
+                        @Override
+                        public double calculateSalary() {
+                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                        }
+                    };
                     e.setEmployeeId(p[0]);
                     e.setFullName(p[1]);
                     e.setDepartmentId(p[2]);
@@ -73,5 +78,5 @@ public class EmployeeDAO {
         }
         return list;
     }
-    
+
 }

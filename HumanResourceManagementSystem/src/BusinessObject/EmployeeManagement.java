@@ -171,7 +171,12 @@ public class EmployeeManagement {
             }
             System.out.println("Department with id " + departmentId + " does not exists");
         }
-        Employee newEmp = new Employee(employeeId, fullName, departmentId, basicSalary);
+        Employee newEmp = new Employee(employeeId, fullName, departmentId, basicSalary) {
+            @Override
+            public double calculateSalary() {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        };
         empList.add(newEmp);
 
         System.out.println("Employee with id " + employeeId + " added successfully");

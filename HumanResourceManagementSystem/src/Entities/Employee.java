@@ -4,8 +4,6 @@
  */
 package Entities;
 
-import BusinessObject.EmployeeManagement;
-import DataObjects.DepartmentDAO;
 import java.time.LocalDate;
 
 /**
@@ -13,16 +11,27 @@ import java.time.LocalDate;
  * @author NGOMI
  */
 public abstract class Employee {
-    String employeeId;      
-    String fullName;        
-    String department;      
-    String jobTitle;       
+
+    String employeeId;
+    String fullName;
+    String department;
+    String jobTitle;
+    String departmentId;
     LocalDate dateOfJoining;
     double basicSalary;
     String employmentType;
     String status;
 
-    public Employee() {};
+    public Employee() {
+    }
+
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
 
     public Employee(String id, String name, String dept, double salary) {
         this.employeeId = id;
@@ -31,23 +40,6 @@ public abstract class Employee {
         this.basicSalary = salary;
         this.status = "Đang làm việc";
     }
-
-    public String getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
     public String getDepartmentId() {
         return departmentId;
     }
@@ -72,14 +64,6 @@ public abstract class Employee {
         this.dateOfJoining = dateOfJoining;
     }
 
-    public double getBasicSalary() {
-        return basicSalary;
-    }
-
-    public void setBasicSalary(double basicSalary) {
-        this.basicSalary = basicSalary;
-    }
-
     public String getEmploymentType() {
         return employmentType;
     }
@@ -97,14 +81,30 @@ public abstract class Employee {
     }
 
     // - Getter
-    public String getEmployeeId() {return employeeId;}
-    public String getFullName() {return fullName;}
-    public String getDepartment() {return department;}
-    public double getBasicSalary() {return basicSalary;}
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public double getBasicSalary() {
+        return basicSalary;
+    }
 
     // - Setter
-    public void setFullName(String fullName) {this.fullName = fullName;}
-    public void setBasicSalary(double basicSalary) {this.basicSalary = basicSalary;}
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setBasicSalary(double basicSalary) {
+        this.basicSalary = basicSalary;
+    }
 
     public void updateInfo(String newName, double newSalary) {
         this.fullName = newName;
