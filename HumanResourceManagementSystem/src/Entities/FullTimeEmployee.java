@@ -17,7 +17,7 @@ package Entities;
 
     public FullTimeEmployee(String id, String name, String departmentId,
                             double baseSalary, double bonus) {
-        super(id, name, departmentId);
+        super(id, name, departmentId, 0);
         this.baseSalary = baseSalary;
         this.bonus = bonus;
     }
