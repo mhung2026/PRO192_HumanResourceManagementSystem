@@ -12,19 +12,17 @@ import java.time.LocalDate;
  *
  * @author NGOMI
  */
-public class Employee {
-
-    String employeeId;
-    String fullName;
-    String departmentId;
-    String jobTitle;
+public abstract class Employee {
+    String employeeId;      
+    String fullName;        
+    String department;      
+    String jobTitle;       
     LocalDate dateOfJoining;
     double basicSalary;
     String employmentType;
     String status;
 
-    public Employee() {
-    }
+    public Employee() {};
 
     public Employee(String id, String name, String dept, double salary) {
         this.employeeId = id;
@@ -98,14 +96,28 @@ public class Employee {
         this.status = status;
     }
 
+    // - Getter
+    public String getEmployeeId() {return employeeId;}
+    public String getFullName() {return fullName;}
+    public String getDepartment() {return department;}
+    public double getBasicSalary() {return basicSalary;}
+
+    // - Setter
+    public void setFullName(String fullName) {this.fullName = fullName;}
+    public void setBasicSalary(double basicSalary) {this.basicSalary = basicSalary;}
+
     public void updateInfo(String newName, double newSalary) {
         this.fullName = newName;
         this.basicSalary = newSalary;
         System.out.println("Đã cập nhật xong cho nhân viên: " + this.employeeId);
     }
 
+    public abstract double calculateSalary();
+
     @Override
     public String toString() {
-        return "Id: " + employeeId + " - Nhân viên: " + fullName + " - Phòng: " + departmentId + " - Lương: " + basicSalary;
+        return "Nhân viên: " + fullName + " - Phòng: " + department + " - Lương: " + calculateSalary();
     }
+
+
 }
