@@ -4,6 +4,10 @@
  */
 package DataObjects;
 
+import Entities.Employee;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  *
  * @author NGOMI
