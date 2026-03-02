@@ -4,10 +4,51 @@
  */
 package Utilities;
 
+import Entities.Department;
+import java.util.List;
+import Entities.Employee;
+
 /**
  *
  * @author NGOMI
  */
 public class DataValidation {
-    
+
+    // 1. Kiểm tra mã nhân viên không trùng
+    public static boolean isEmployeeIdUnique(String id, List<Employee> list) {
+        if (id == null) {
+            return false;
+        }
+        for (Employee e : list) {
+            if (id.equalsIgnoreCase(e.getEmployeeId())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean isDepartmentIdExists(String id, List<Department> list) {
+        if (id == null) {
+            return false;
+        }
+        for (Department e : list) {
+            if (id.equalsIgnoreCase(e.getDepartmentId())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // 2. Kiểm tra lương không âm
+    public static boolean isValidSalary(double salary) {
+        return salary >= 0;
+    }
+
+    // 3. Kiểm tra tên không trống
+    public static boolean isValidName(String name) {
+        if (name == null) {
+            return false;
+        }
+        return !name.trim().isEmpty();
+    }
 }

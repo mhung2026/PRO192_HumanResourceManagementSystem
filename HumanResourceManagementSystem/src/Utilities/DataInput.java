@@ -4,10 +4,67 @@
  */
 package Utilities;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
 /**
  *
  * @author NGOMI
  */
 public class DataInput {
-    
+
+    private static final Scanner sc = new Scanner(System.in);
+
+    public static String getString(String message) {
+        while (true) {
+            System.out.print(message);
+            String input = sc.nextLine().trim();
+            if (!input.isEmpty()) {
+                return input;
+            }
+            System.out.println("Dữ liệu không được để trống! Vui lòng nhập lại.");
+        }
+    }
+
+    public static double getDouble(String message) {
+        while (true) {
+            try {
+                System.out.print(message);
+                double result = Double.parseDouble(sc.nextLine());
+                return result;
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số thực hợp lệ!");
+            }
+        }
+    }
+
+    public static LocalDate getLocalDate(String message) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        while (true) {
+            try {
+                System.out.print(message + " (dd/MM/yyyy): ");
+                String input = sc.nextLine().trim();
+                return LocalDate.parse(input, formatter);
+            } catch (DateTimeParseException e) {
+                System.out.println("Định dạng ngày không đúng (Ví dụ: 25/12/2023). Vui lòng nhập lại!");
+            }
+        }
+    }
+
+    public static int getInt(String message, int min, int max) {
+        while (true) {
+            try {
+                System.out.print(message);
+                int result = Integer.parseInt(sc.nextLine());
+                if (result >= min && result <= max) {
+                    return result;
+                }
+                System.out.println("Vui lòng chọn trong khoảng từ " + min + " đến " + max);
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số nguyên!");
+            }
+        }
+    }
 }
