@@ -4,8 +4,9 @@
  */
 package DataObjects;
 
-import java.util.List;
 import Entities.Employee;
+import java.util.List;
+import Entities.User;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -27,10 +28,10 @@ public class EmployeeDAO {
     private final String FILE_NAME = "employees.txt";
     private final String DELIMITER = ",";
 
-    public void saveToFile(List<Employee> list) {
+    public void saveToFile(List<User> list) {
         try ( PrintWriter pw = new PrintWriter(new FileWriter(FILE_NAME))) {
-            for (Employee e : list) {
-                pw.println(e.getEmployeeId() + DELIMITER
+            for (User e : list) {
+                pw.println(e.getUserId() + DELIMITER
                         + e.getFullName() + DELIMITER
                         + e.getDepartmentId() + DELIMITER
                         + e.getJobTitle() + DELIMITER
@@ -44,8 +45,8 @@ public class EmployeeDAO {
         }
     }
 
-    public List<Employee> loadFromFile() {
-        List<Employee> list = new ArrayList<>();
+    public List<User> loadFromFile() {
+        List<User> list = new ArrayList<>();
         File f = new File(FILE_NAME);
         if (!f.exists()) {
             return list;
@@ -56,13 +57,10 @@ public class EmployeeDAO {
             while ((line = br.readLine()) != null) {
                 String[] p = line.split(DELIMITER);
                 if (p.length == 8) {
-                    Employee e = new Employee() {
-                        @Override
-                        public double calculateSalary() {
-                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-                        }
+                    User e = new Employee() {
+
                     };
-                    e.setEmployeeId(p[0]);
+                    e.setUserId(p[0]);
                     e.setFullName(p[1]);
                     e.setDepartmentId(p[2]);
                     e.setJobTitle(p[3]);

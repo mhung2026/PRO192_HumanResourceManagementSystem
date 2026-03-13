@@ -5,9 +5,10 @@
 package BusinessObject;
 
 import DataObjects.DepartmentDAO;
-import Entities.Employee;
+import Entities.User;
 import Entities.Department;
 import DataObjects.EmployeeDAO;
+import Entities.Employee;
 import Utilities.DataInput;
 import Utilities.DataValidation;
 
@@ -19,14 +20,14 @@ import java.util.ArrayList;
  */
 public class EmployeeManagement {
 
-    ArrayList<Employee> empList = new ArrayList<>();
+    ArrayList<User> empList = new ArrayList<>();
     ArrayList<Department> depList = new ArrayList<>();
     private final EmployeeDAO dao = new EmployeeDAO();
     private final DepartmentDAO daoDepartment = new DepartmentDAO();
 
     public EmployeeManagement() {
         if (this.empList.isEmpty() || this.empList == null) {
-            this.empList = (ArrayList<Employee>) dao.loadFromFile();
+            this.empList = (ArrayList<User>) dao.loadFromFile();
         }
         if (this.empList == null) {
             this.empList = new ArrayList<>();
@@ -62,9 +63,9 @@ public class EmployeeManagement {
     *               RETURN null
     * END FUNCTION
     * */
-    public Employee searchById(String id) {
-        for (Employee emp : empList) {
-            if (emp.getEmployeeId().equalsIgnoreCase(id)) {
+    public User searchById(String id) {
+        for (User emp : empList) {
+            if (emp.getUserId().equalsIgnoreCase(id)) {
                 return emp;
             }
         }
@@ -76,7 +77,7 @@ public class EmployeeManagement {
     * FUNCTION updateEmployee(id)
     *   emp <- searchById(id)
     *   IF emp = null
-    *       PRINT "Employee not found"
+    *       PRINT "User not found"
     *       RETURN
     *   INPUT fullName
     *   INPUT basicSalary
@@ -85,7 +86,7 @@ public class EmployeeManagement {
     * END FUNCTION
     * */
     public void updateEmployee(String id) {
-        Employee emp = searchById(id);
+        User emp = searchById(id);
 
         if (emp == null) {
             System.out.println("Employee with id " + id + " not found");
@@ -102,7 +103,7 @@ public class EmployeeManagement {
         }
         emp.setFullName(fullName);
         emp.setBasicSalary(salary);
-        System.out.println("Employee with id " + emp.getEmployeeId() + " updated successfully");
+        System.out.println("Employee with id " + emp.getUserId() + " updated successfully");
     }
 
     // Method deleteEmployee() + Pseudocode
@@ -110,13 +111,13 @@ public class EmployeeManagement {
     * FUNCTION deleteEmployee(id)
     *   emp <- searchById(id)
     *   IF emp = null
-    *       PRINT "Employee not found"
+    *       PRINT "User not found"
     *       RETURN
     *   REMOVE emp FROM employeeList
     * END FUNCTION
     * */
     public void deleteEmployee(String id) {
-        Employee emp = searchById(id);
+        User emp = searchById(id);
 
         if (emp == null) {
             System.out.println("Employee with id " + id + " not found");
@@ -124,16 +125,16 @@ public class EmployeeManagement {
         }
 
         empList.remove(emp);
-        System.out.println("Employee with id " + emp.getEmployeeId() + " deleted successfully");
+        System.out.println("Employee with id " + emp.getUserId() + " deleted successfully");
     }
 
     /*
     * FUNCTION addEmployee()
-    *   INPUT employeeId
+    *   INPUT userId
     *
-    *   emp <- searchById(employeeId)
+    *   emp <- searchById(userId)
     *   IF emp != null THEN
-    *       PRINT "Employee with id already exists"
+    *       PRINT "User with id already exists"
     *       RETURN
     *   END IF
     *
@@ -141,17 +142,17 @@ public class EmployeeManagement {
     *   INPUT basicSalary
     *   INPUT department
     *
-    *   newEmp <- new Employee(employeeId, fullName, department, basicSalary)
+    *   newEmp <- new User(userId, fullName, department, basicSalary)
     *   ADD newEmp to empList
     *
-    *   PRINT "Employee added successfully"
+    *   PRINT "User added successfully"
     * END FUNCTION
     * */
     public void addEmployee() {
 
-        String employeeId = DataInput.getString("Enter employee ID: ");
-        if (!DataValidation.isEmployeeIdUnique(employeeId, empList)) {
-            System.out.println("Employee with id " + employeeId + " already exists");
+        String userId = DataInput.getString("Enter employee ID: ");
+        if (!DataValidation.isUserIdUnique(userId, empList)) {
+            System.out.println("Employee with id " + userId + " already exists");
             return;
         }
         String fullName = DataInput.getString("Enter full name: ");
@@ -171,15 +172,12 @@ public class EmployeeManagement {
             }
             System.out.println("Department with id " + departmentId + " does not exists");
         }
-        Employee newEmp = new Employee(employeeId, fullName, departmentId, basicSalary) {
-            @Override
-            public double calculateSalary() {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
+        User newEmp = new Employee(userId, fullName, departmentId, basicSalary) {
+            
         };
         empList.add(newEmp);
 
-        System.out.println("Employee with id " + employeeId + " added successfully");
+        System.out.println("Employee with id " + userId + " added successfully");
 
     }
 
@@ -203,11 +201,11 @@ public class EmployeeManagement {
             return;
         }
         System.out.println("===== List of all employees =====");
-        for (Employee emp : empList) {
+        for (User emp : empList) {
             Department dept = getDepartmentById(emp.getDepartmentId());
             String deptName = (dept != null) ? dept.getDepartmentName() : "Unknown";
             System.out.printf("ID: %s | Tên: %s | Phòng: %s | Lương: %.2f\n",
-                    emp.getEmployeeId(),
+                    emp.getUserId(),
                     emp.getFullName(),
                     deptName,
                     emp.getBasicSalary());

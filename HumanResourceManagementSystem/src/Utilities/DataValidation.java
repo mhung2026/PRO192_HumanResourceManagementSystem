@@ -6,7 +6,7 @@ package Utilities;
 
 import Entities.Department;
 import java.util.List;
-import Entities.Employee;
+import Entities.User;
 
 /**
  *
@@ -15,12 +15,12 @@ import Entities.Employee;
 public class DataValidation {
 
     // 1. Kiểm tra mã nhân viên không trùng
-    public static boolean isEmployeeIdUnique(String id, List<Employee> list) {
+    public static boolean isUserIdUnique(String id, List<User> list) {
         if (id == null) {
             return false;
         }
-        for (Employee e : list) {
-            if (id.equalsIgnoreCase(e.getEmployeeId())) {
+        for (User e : list) {
+            if (id.equalsIgnoreCase(e.getUserId())) {
                 return false;
             }
         }
