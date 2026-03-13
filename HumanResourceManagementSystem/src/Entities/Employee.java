@@ -15,13 +15,13 @@ public class Employee extends User {
     public Employee() {
     }
 
-    public Employee(String id, String name, String departmentId, double allowance) {
-        super(id, name, departmentId, 0);
+    public Employee(String id, String name, String departmentId, double salary) {
+        super(id, name, departmentId, salary);
     }
 
     @Override
     public double calculateSalary() {
-        return 0;
+        return this.basicSalary;
     }
 
     @Override

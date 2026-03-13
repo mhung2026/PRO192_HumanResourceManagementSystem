@@ -88,6 +88,6 @@ public class SalaryRecord {
     }
     public double caculatorSalary()
     {
-        return 0;
+        return this.totalSalary;
     }
 }
